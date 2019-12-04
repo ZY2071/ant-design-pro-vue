@@ -6,8 +6,7 @@
       @close="onClose"
       :closable="false"
       :visible="visible"
-      :getContainer="() => $refs.settingDrawer"
-      :style="{}"
+      :handle="handle"
     >
       <div class="setting-drawer-index-content">
 
@@ -185,22 +184,16 @@ export default {
   mixins: [mixin, mixinDevice],
   data () {
     return {
-      visible: true,
-      colorList
+      visible: false,
+      colorList,
+      handle: <div/>
     }
   },
   watch: {
 
   },
   mounted () {
-    const vm = this
-    setTimeout(() => {
-      vm.visible = false
-    }, 16)
-    // 当主题色不是默认色时，才进行主题编译
-    if (this.primaryColor !== config.primaryColor) {
-      updateTheme(this.primaryColor)
-    }
+    updateTheme(this.primaryColor)
     if (this.colorWeak !== config.colorWeak) {
       updateColorWeak(this.colorWeak)
     }
