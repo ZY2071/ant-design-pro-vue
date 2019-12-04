@@ -9,9 +9,9 @@
           <slot name="action"></slot>
         </span>
       </div>
-      <div class="total" :style="{fontSize:titleFontSize+'px'}">
+      <div class="total" :style="{ fontSize: titleFontSize + 'px' }">
         <slot name="total">
-          <span>{{ typeof total === 'function' && total() || total }}</span>
+          <span>{{ (typeof total === 'function' && total()) || total }}</span>
           <span v-if="suffix" v-text="suffix" class="suffix"></span>
         </slot>
       </div>

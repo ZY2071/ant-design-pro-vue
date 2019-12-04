@@ -11,11 +11,11 @@ import { ACCESS_TOKEN } from '@/store/mutation-types'
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const whiteList = ['login', 'register', 'registerResult'] // no redirect whitelist
-const defaultRoutePath = '/dashboard/workplace'
+const defaultRoutePath = '/dashboard/analysis'
 
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
-  to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${to.meta.title} - ${domTitle}`))
+  to.meta && typeof to.meta.title !== 'undefined' && setDocumentTitle(`${to.meta.title} - ${domTitle}`)
   if (Vue.ls.get(ACCESS_TOKEN)) {
     /* has token */
     if (to.path === '/user/login') {

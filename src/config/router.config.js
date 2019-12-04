@@ -9,7 +9,7 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: '首页' },
-    redirect: '/dashboard/workplace',
+    redirect: '/dashboard/analysis',
     children: [
       // dashboard
       {
@@ -27,9 +27,10 @@ export const asyncRouterMap = [
           },
           // 外部链接
           {
-            path: 'https://www.baidu.com/',
+            path: '/dashboard/monitor',
             name: 'Monitor',
-            meta: { title: '监控页（外部）', target: '_blank' }
+            component: () => import('@/views/dashboard/Monitor'),
+            meta: { title: '监控页', keepAlive: false, permission: [ 'dashboard' ] }
           },
           {
             path: '/dashboard/workplace',
